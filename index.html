@@ -2,197 +2,248 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>BTBD Botany MCQ Quiz</title>
+<title>BTBD Botany Exam</title>
 
 <style>
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#f4f7f6;
-  color:#222;
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:#f3f6f5;
+ color:#202124
 }
 
 .container{
-  max-width:720px;
-  margin:auto;
-  padding:15px;
+ max-width:720px;
+ margin:auto;
+ padding:12px
+}
+
+.card{
+ background:white;
+ border-radius:18px;
+ padding:20px;
+ margin:12px 0;
+ box-shadow:0 3px 14px rgba(0,0,0,.08)
 }
 
 .header{
-  background:white;
-  padding:22px 15px;
-  margin-bottom:15px;
-  border-radius:16px;
-  text-align:center;
-  box-shadow:0 3px 12px rgba(0,0,0,.08);
+ text-align:center;
+ padding:24px 15px
 }
 
 .header h1{
-  margin:0 0 8px;
-  font-size:25px;
+ margin:0 0 8px;
+ font-size:26px
 }
 
 .header p{
-  margin:0;
-  color:#666;
+ margin:0;
+ color:#666
 }
 
-.quiz-card{
-  background:white;
-  padding:22px;
-  border-radius:16px;
-  box-shadow:0 3px 12px rgba(0,0,0,.08);
+.setup h2{
+ margin-top:0
 }
 
-.topbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:15px;
-  font-weight:bold;
+.select{
+ width:100%;
+ padding:15px;
+ margin:8px 0 15px;
+ border:2px solid #ddd;
+ border-radius:10px;
+ font-size:16px;
+ background:white
+}
+
+.start-btn,
+.next-btn,
+.submit-btn,
+.restart-btn{
+ width:100%;
+ border:0;
+ border-radius:11px;
+ padding:15px;
+ font-size:17px;
+ cursor:pointer;
+ margin-top:10px
+}
+
+.start-btn{
+ background:#202124;
+ color:white
+}
+
+.next-btn{
+ background:#202124;
+ color:white
+}
+
+.submit-btn{
+ background:#b3261e;
+ color:white
+}
+
+.restart-btn{
+ background:#202124;
+ color:white
+}
+
+.exam-top{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ font-weight:bold;
+ gap:10px
+}
+
+.timer{
+ padding:8px 12px;
+ border-radius:20px;
+ background:#eee
+}
+
+.timer.danger{
+ background:#f8d7da
 }
 
 .progress{
-  height:8px;
-  background:#e5e5e5;
-  border-radius:10px;
-  overflow:hidden;
-  margin-bottom:20px;
+ height:8px;
+ background:#e4e4e4;
+ border-radius:10px;
+ overflow:hidden;
+ margin:15px 0
 }
 
 .progress-bar{
-  height:100%;
-  width:0%;
-  background:#222;
-  transition:.3s;
+ height:100%;
+ width:0%;
+ background:#202124;
+ transition:.2s
 }
 
 .topic{
-  display:inline-block;
-  padding:6px 12px;
-  background:#eaf0ff;
-  border-radius:20px;
-  font-size:13px;
-  margin-bottom:15px;
+ display:inline-block;
+ padding:6px 12px;
+ background:#eaf0ff;
+ border-radius:20px;
+ font-size:13px;
+ margin-bottom:12px
 }
 
 .question{
-  font-size:20px;
-  font-weight:bold;
-  line-height:1.5;
-  margin-bottom:20px;
+ font-size:20px;
+ font-weight:bold;
+ line-height:1.5;
+ margin:8px 0 20px
 }
 
 .option{
-  display:block;
-  width:100%;
-  padding:15px;
-  margin:10px 0;
-  background:white;
-  border:2px solid #ddd;
-  border-radius:11px;
-  text-align:left;
-  font-size:16px;
-  cursor:pointer;
+ display:block;
+ width:100%;
+ padding:15px;
+ margin:10px 0;
+ background:white;
+ border:2px solid #ddd;
+ border-radius:11px;
+ text-align:left;
+ font-size:16px;
+ cursor:pointer
 }
 
-.option:hover{
-  border-color:#777;
+.option.selected{
+ border-color:#202124;
+ background:#f0f0f0
 }
 
 .option.correct{
-  background:#e9f7ef;
-  border-color:#16803c;
+ border-color:#16803c;
+ background:#e9f7ef
 }
 
 .option.wrong{
-  background:#fdecec;
-  border-color:#c62828;
+ border-color:#c62828;
+ background:#fdecec
 }
 
 .option:disabled{
-  cursor:not-allowed;
+ cursor:not-allowed
 }
 
 .feedback{
-  display:none;
-  margin-top:18px;
-  padding:15px;
-  border-radius:10px;
-  line-height:1.5;
+ display:none;
+ margin-top:15px;
+ padding:15px;
+ border-radius:10px;
+ line-height:1.5
 }
 
-.feedback.correct{
-  display:block;
-  background:#e9f7ef;
+.feedback.show{
+ display:block
 }
 
-.feedback.wrong{
-  display:block;
-  background:#fdecec;
+.correct-feedback{
+ background:#e9f7ef
+}
+
+.wrong-feedback{
+ background:#fdecec
 }
 
 .explanation{
-  margin-top:8px;
-  font-size:15px;
-}
-
-.next-btn,
-.restart-btn{
-  width:100%;
-  padding:15px;
-  margin-top:18px;
-  border:0;
-  border-radius:10px;
-  background:#222;
-  color:white;
-  font-size:17px;
-  cursor:pointer;
+ margin-top:8px;
+ font-size:15px
 }
 
 .result{
-  display:none;
-  text-align:center;
+ display:none;
+ text-align:center
 }
 
-.final-score{
-  font-size:42px;
-  font-weight:bold;
-  margin:20px 0;
+.big-score{
+ font-size:42px;
+ font-weight:bold;
+ margin:15px 0
 }
 
-.loading{
-  background:white;
-  padding:30px;
-  border-radius:16px;
-  text-align:center;
+.stat{
+ padding:12px;
+ margin:8px 0;
+ background:#f5f5f5;
+ border-radius:10px;
+ text-align:left
+}
+
+.topic-row{
+ display:flex;
+ justify-content:space-between;
+ padding:10px 0;
+ border-bottom:1px solid #ddd
+}
+
+.hidden{
+ display:none!important
 }
 
 .error{
-  background:#fdecec;
-  padding:20px;
-  border-radius:12px;
-  line-height:1.5;
+ background:#fdecec;
+ padding:18px;
+ border-radius:12px;
+ line-height:1.5
+}
+
+.small{
+ font-size:13px;
+ color:#666
 }
 
 @media(max-width:600px){
-  .container{
-    padding:10px;
-  }
-
-  .quiz-card{
-    padding:17px;
-  }
-
-  .question{
-    font-size:18px;
-  }
+ .container{padding:8px}
+ .card{padding:17px}
+ .question{font-size:18px}
 }
 </style>
 </head>
@@ -201,327 +252,665 @@ body{
 
 <div class="container">
 
-  <div class="header">
-    <h1>🌿 BTBD Botany MCQ Quiz</h1>
-    <p>Botany The Burning Desire</p>
-  </div>
+<!-- HEADER -->
 
-  <div id="loading" class="loading">
-    🌱 Loading Botany Questions...
-  </div>
-
-  <div id="quizCard" class="quiz-card" style="display:none;">
-
-    <div class="topbar">
-      <span id="questionNumber"></span>
-      <span id="scoreDisplay">Score: 0</span>
-    </div>
-
-    <div class="progress">
-      <div id="progressBar" class="progress-bar"></div>
-    </div>
-
-    <div id="topic" class="topic"></div>
-
-    <div id="question" class="question"></div>
-
-    <div id="options"></div>
-
-    <div id="feedback" class="feedback">
-
-      <strong id="feedbackTitle"></strong>
-
-      <div class="explanation">
-        <b>Explanation:</b>
-        <span id="explanation"></span>
-      </div>
-
-    </div>
-
-    <button id="nextBtn" class="next-btn" style="display:none;">
-      Next Question →
-    </button>
-
-  </div>
+<div class="card header">
+ <h1>🌿 BTBD Botany Exam</h1>
+ <p>UPHESC Assistant Professor Botany Preparation</p>
+</div>
 
 
-  <div id="result" class="quiz-card result">
+<!-- SETUP -->
 
-    <h2>🎉 Quiz Completed!</h2>
+<div id="setup" class="card setup">
 
-    <div id="finalScore" class="final-score"></div>
+ <h2>🎯 Start Test</h2>
 
-    <p id="resultMessage"></p>
+ <label>Number of Questions</label>
 
-    <button class="restart-btn" onclick="restartQuiz()">
-      🔄 Restart Quiz
-    </button>
+ <select id="questionCount" class="select">
+   <option value="20">20 Questions</option>
+   <option value="50">50 Questions</option>
+   <option value="100">100 Questions</option>
+ </select>
 
-  </div>
+
+ <label>Time</label>
+
+ <select id="timeLimit" class="select">
+   <option value="20">20 Minutes</option>
+   <option value="50">50 Minutes</option>
+   <option value="100">100 Minutes</option>
+ </select>
+
+
+ <p class="small">
+ Negative marking: <b>-0.25</b> for each wrong answer.
+ </p>
+
+ <button class="start-btn" onclick="startExam()">
+ 🚀 Start Exam
+ </button>
+
+</div>
+
+
+<!-- EXAM -->
+
+<div id="exam" class="hidden">
+
+ <div class="card">
+
+   <div class="exam-top">
+
+     <span id="questionNumber">
+       Question 1
+     </span>
+
+     <span id="timer" class="timer">
+       20:00
+     </span>
+
+   </div>
+
+   <div class="progress">
+     <div id="progressBar" class="progress-bar"></div>
+   </div>
+
+   <div id="topic" class="topic">
+     Botany
+   </div>
+
+   <div id="question" class="question"></div>
+
+   <div id="options"></div>
+
+   <div id="feedback" class="feedback">
+
+     <b id="feedbackTitle"></b>
+
+     <div class="explanation">
+       <b>Explanation:</b>
+       <span id="explanation"></span>
+     </div>
+
+   </div>
+
+   <button id="nextBtn"
+           class="next-btn hidden"
+           onclick="nextQuestion()">
+     Next Question →
+   </button>
+
+ </div>
+
+
+ <div class="card">
+
+   <button class="submit-btn"
+           onclick="submitExam()">
+     🏁 Submit Test
+   </button>
+
+ </div>
+
+</div>
+
+
+<!-- RESULT -->
+
+<div id="result" class="card result">
+
+ <h2>🎉 Test Completed</h2>
+
+ <div id="finalScore" class="big-score">
+   0
+ </div>
+
+ <div id="resultMessage"></div>
+
+ <div class="stat">
+   ✅ Correct:
+   <b id="correctCount">0</b>
+ </div>
+
+ <div class="stat">
+   ❌ Wrong:
+   <b id="wrongCount">0</b>
+ </div>
+
+ <div class="stat">
+   ⭕ Unattempted:
+   <b id="unattemptedCount">0</b>
+ </div>
+
+ <div class="stat">
+   📊 Accuracy:
+   <b id="accuracy">0%</b>
+ </div>
+
+ <h3>📚 Topic Performance</h3>
+
+ <div id="topicPerformance"></div>
+
+ <button class="restart-btn"
+         onclick="location.reload()">
+   🔄 New Test
+ </button>
+
+</div>
+
 
 </div>
 
 
 <script>
 
-let questions = [];
-let currentQuestion = 0;
-let score = 0;
-let answered = false;
+let allQuestions=[];
+let examQuestions=[];
+
+let currentQuestion=0;
+
+let answers=[];
+
+let correct=0;
+let wrong=0;
+let unattempted=0;
+
+let score=0;
+
+let totalSeconds=0;
+let timerInterval=null;
 
 
-/* =========================
-   LOAD QUESTIONS
-========================= */
+/* ==========================
+   LOAD DATABASE
+========================== */
 
 async function loadQuestions(){
 
-  try{
+ try{
 
-    const response = await fetch("mcqs.json");
+   const response=await fetch("mcqs.json");
 
-    if(!response.ok){
-      throw new Error("mcqs.json could not be loaded.");
-    }
+   if(!response.ok){
+     throw new Error("mcqs.json could not be loaded.");
+   }
 
-    questions = await response.json();
+   allQuestions=await response.json();
 
-    if(!Array.isArray(questions) || questions.length === 0){
-      throw new Error("No MCQs found in mcqs.json.");
-    }
+   if(!Array.isArray(allQuestions) ||
+      allQuestions.length===0){
 
-    document.getElementById("loading").style.display="none";
+     throw new Error("No questions found.");
 
-    document.getElementById("quizCard").style.display="block";
+   }
 
-    showQuestion();
+ }
 
-  }
+ catch(error){
 
-  catch(error){
+   document.getElementById("setup").innerHTML=`
+     <div class="error">
+       <b>⚠️ Database Error</b>
+       <br><br>
+       ${error.message}
+       <br><br>
+       Make sure <b>mcqs.json</b> is in the repository root.
+     </div>
+   `;
 
-    document.getElementById("loading").innerHTML = `
-      <div class="error">
-        <b>⚠️ Quiz Loading Error</b>
-        <br><br>
-        ${error.message}
-        <br><br>
-        Make sure <b>mcqs.json</b> is present
-        in the same GitHub repository.
-      </div>
-    `;
-
-  }
+ }
 
 }
 
 
-/* =========================
+/* ==========================
+   START EXAM
+========================== */
+
+function startExam(){
+
+ const requestedCount=
+   parseInt(document.getElementById("questionCount").value);
+
+ const minutes=
+   parseInt(document.getElementById("timeLimit").value);
+
+
+ if(allQuestions.length===0){
+
+   alert("No MCQs available.");
+
+   return;
+
+ }
+
+
+ const count=
+   Math.min(requestedCount,allQuestions.length);
+
+
+ /* RANDOM QUESTIONS */
+
+ examQuestions=
+   [...allQuestions]
+   .sort(()=>Math.random()-0.5)
+   .slice(0,count);
+
+
+ answers=new Array(count).fill(null);
+
+ currentQuestion=0;
+
+ correct=0;
+ wrong=0;
+ unattempted=0;
+ score=0;
+
+
+ totalSeconds=minutes*60;
+
+
+ document.getElementById("setup")
+   .classList.add("hidden");
+
+ document.getElementById("exam")
+   .classList.remove("hidden");
+
+
+ startTimer();
+
+ showQuestion();
+
+}
+
+
+/* ==========================
+   TIMER
+========================== */
+
+function startTimer(){
+
+ clearInterval(timerInterval);
+
+ updateTimer();
+
+ timerInterval=setInterval(function(){
+
+   totalSeconds--;
+
+   updateTimer();
+
+   if(totalSeconds<=0){
+
+     clearInterval(timerInterval);
+
+     alert("⏰ Time is over!");
+
+     submitExam();
+
+   }
+
+ },1000);
+
+}
+
+
+function updateTimer(){
+
+ const timer=
+   document.getElementById("timer");
+
+ const minutes=
+   Math.floor(totalSeconds/60);
+
+ const seconds=
+   totalSeconds%60;
+
+ timer.textContent=
+   String(minutes).padStart(2,"0")
+   +":"
+   +String(seconds).padStart(2,"0");
+
+
+ if(totalSeconds<=60){
+
+   timer.classList.add("danger");
+
+ }
+
+}
+
+
+/* ==========================
    SHOW QUESTION
-========================= */
+========================== */
 
 function showQuestion(){
 
-  answered=false;
+ const q=examQuestions[currentQuestion];
 
-  const q=questions[currentQuestion];
-
-  document.getElementById("questionNumber").textContent =
-    "Question " + (currentQuestion+1) +
-    " / " + questions.length;
-
-  document.getElementById("scoreDisplay").textContent =
-    "Score: " + score;
-
-  document.getElementById("topic").textContent =
-    "🌿 " + (q.topic || "Botany");
-
-  document.getElementById("question").textContent =
-    q.question;
-
-  const optionsContainer =
-    document.getElementById("options");
-
-  optionsContainer.innerHTML="";
+ document.getElementById("questionNumber")
+   .textContent=
+   "Question "
+   +(currentQuestion+1)
+   +" / "
+   +examQuestions.length;
 
 
-  q.options.forEach(function(option,index){
-
-    const button=document.createElement("button");
-
-    button.className="option";
-
-    button.textContent =
-      String.fromCharCode(65+index) + ". " + option;
-
-    button.onclick=function(){
-
-      checkAnswer(button,option);
-
-    };
-
-    optionsContainer.appendChild(button);
-
-  });
+ document.getElementById("progressBar")
+   .style.width=
+   ((currentQuestion+1)/examQuestions.length*100)
+   +"%";
 
 
-  document.getElementById("feedback").className="feedback";
-
-  document.getElementById("feedback").style.display="none";
-
-  document.getElementById("nextBtn").style.display="none";
+ document.getElementById("topic")
+   .textContent=
+   "🌿 "+(q.topic||"Botany");
 
 
-  const progress =
-    ((currentQuestion) / questions.length) * 100;
-
-  document.getElementById("progressBar").style.width =
-    progress + "%";
-
-}
+ document.getElementById("question")
+   .textContent=
+   q.question;
 
 
-/* =========================
-   CHECK ANSWER
-========================= */
+ const container=
+   document.getElementById("options");
 
-function checkAnswer(selectedButton,selectedAnswer){
-
-  if(answered) return;
-
-  answered=true;
-
-  const q=questions[currentQuestion];
-
-  const buttons=document.querySelectorAll(".option");
+ container.innerHTML="";
 
 
-  buttons.forEach(function(button){
+ q.options.forEach(function(option,index){
 
-    button.disabled=true;
+   const button=
+     document.createElement("button");
 
-    const text=button.textContent.substring(3);
+   button.className="option";
 
-    if(text === q.answer){
-
-      button.classList.add("correct");
-
-    }
-
-  });
+   button.textContent=
+     String.fromCharCode(65+index)
+     +". "
+     +option;
 
 
-  const feedback=document.getElementById("feedback");
+   if(answers[currentQuestion]===option){
 
-  const title=document.getElementById("feedbackTitle");
+     button.classList.add("selected");
 
-  const explanation=document.getElementById("explanation");
-
-
-  if(selectedAnswer === q.answer){
-
-    score++;
-
-    selectedButton.classList.add("correct");
-
-    title.textContent="✅ Correct!";
-
-    feedback.className="feedback correct";
-
-  }
-
-  else{
-
-    selectedButton.classList.add("wrong");
-
-    title.textContent =
-      "❌ Wrong! Correct Answer: " + q.answer;
-
-    feedback.className="feedback wrong";
-
-  }
+   }
 
 
-  explanation.textContent =
-    q.explanation || "Explanation not available.";
+   button.onclick=function(){
+
+     selectAnswer(button,option);
+
+   };
 
 
-  document.getElementById("scoreDisplay").textContent =
-    "Score: " + score;
+   container.appendChild(button);
 
-  document.getElementById("nextBtn").style.display =
-    "block";
+ });
+
+
+ document.getElementById("feedback")
+   .className="feedback";
+
+ document.getElementById("feedback")
+   .style.display="none";
+
+
+ document.getElementById("nextBtn")
+   .classList.add("hidden");
 
 }
 
 
-/* =========================
+/* ==========================
+   SELECT ANSWER
+========================== */
+
+function selectAnswer(button,answer){
+
+ if(document.getElementById("feedback")
+    .style.display==="block"){
+
+   return;
+
+ }
+
+
+ answers[currentQuestion]=answer;
+
+
+ document.querySelectorAll(".option")
+   .forEach(function(btn){
+
+     btn.classList.remove("selected");
+
+   });
+
+
+ button.classList.add("selected");
+
+
+}
+
+
+/* ==========================
    NEXT QUESTION
-========================= */
+========================== */
 
-document.getElementById("nextBtn").onclick=function(){
+function nextQuestion(){
 
-  currentQuestion++;
+ if(currentQuestion<
+    examQuestions.length-1){
 
-  if(currentQuestion < questions.length){
+   currentQuestion++;
 
-    showQuestion();
+   showQuestion();
 
-  }
+ }
 
-  else{
+ else{
 
-    showResult();
+   submitExam();
 
-  }
-
-};
-
-
-/* =========================
-   RESULT
-========================= */
-
-function showResult(){
-
-  document.getElementById("quizCard").style.display="none";
-
-  document.getElementById("result").style.display="block";
-
-  const percentage =
-    Math.round((score/questions.length)*100);
-
-  document.getElementById("finalScore").textContent =
-    score + " / " + questions.length;
-
-  document.getElementById("resultMessage").textContent =
-    "Your accuracy is " + percentage + "%.";
+ }
 
 }
 
 
-/* =========================
-   RESTART
-========================= */
+/* ==========================
+   SUBMIT EXAM
+========================== */
 
-function restartQuiz(){
+function submitExam(){
 
-  currentQuestion=0;
+ clearInterval(timerInterval);
 
-  score=0;
+ correct=0;
+ wrong=0;
+ unattempted=0;
+ score=0;
 
-  document.getElementById("result").style.display="none";
 
-  document.getElementById("quizCard").style.display="block";
+ examQuestions.forEach(function(q,index){
 
-  showQuestion();
+   const selected=answers[index];
+
+
+   if(selected===null){
+
+     unattempted++;
+
+   }
+
+   else if(selected===q.answer){
+
+     correct++;
+
+     score+=1;
+
+   }
+
+   else{
+
+     wrong++;
+
+     score-=0.25;
+
+   }
+
+ });
+
+
+ const percentage=
+   Math.max(
+     0,
+     Math.round(
+       (score/examQuestions.length)*100
+     )
+   );
+
+
+ document.getElementById("exam")
+   .classList.add("hidden");
+
+ document.getElementById("result")
+   .style.display="block";
+
+
+ document.getElementById("finalScore")
+   .textContent=
+   score.toFixed(2)
+   +" / "
+   +examQuestions.length;
+
+
+ document.getElementById("correctCount")
+   .textContent=correct;
+
+
+ document.getElementById("wrongCount")
+   .textContent=wrong;
+
+
+ document.getElementById("unattemptedCount")
+   .textContent=unattempted;
+
+
+ document.getElementById("accuracy")
+   .textContent=percentage+"%";
+
+
+ let message="Keep practicing! 🌱";
+
+
+ if(percentage>=80){
+
+   message="🔥 Excellent performance!";
+
+ }
+
+ else if(percentage>=60){
+
+   message="👍 Good performance. Keep revising!";
+
+ }
+
+ else if(percentage>=40){
+
+   message="📚 Needs more revision.";
+
+ }
+
+
+ document.getElementById("resultMessage")
+   .innerHTML=
+   "<h3>"+message+"</h3>";
+
+
+ showTopicPerformance();
 
 }
 
 
-/* =========================
-   START QUIZ
-========================= */
+/* ==========================
+   TOPIC PERFORMANCE
+========================== */
+
+function showTopicPerformance(){
+
+ const topics={};
+
+
+ examQuestions.forEach(function(q,index){
+
+   const topic=q.topic||"Other";
+
+   if(!topics[topic]){
+
+     topics[topic]={
+       total:0,
+       correct:0
+     };
+
+   }
+
+
+   topics[topic].total++;
+
+
+   if(answers[index]===q.answer){
+
+     topics[topic].correct++;
+
+   }
+
+ });
+
+
+ const box=
+   document.getElementById("topicPerformance");
+
+ box.innerHTML="";
+
+
+ Object.keys(topics)
+   .forEach(function(topic){
+
+     const data=topics[topic];
+
+     const percentage=
+       Math.round(
+         data.correct/data.total*100
+       );
+
+
+     const row=
+       document.createElement("div");
+
+     row.className="topic-row";
+
+
+     row.innerHTML=`
+       <span>🌿 ${topic}</span>
+       <b>${data.correct}/${data.total}
+       (${percentage}%)</b>
+     `;
+
+
+     box.appendChild(row);
+
+   });
+
+}
+
+
+/* ==========================
+   INITIALIZE
+========================== */
 
 loadQuestions();
 
