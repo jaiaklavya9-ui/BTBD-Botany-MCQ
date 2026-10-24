@@ -2,248 +2,351 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>BTBD Botany Exam</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+    box-sizing:border-box;
+}
 
 body{
- margin:0;
- font-family:Arial,sans-serif;
- background:#f3f6f5;
- color:#202124
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f4f7f6;
+    color:#222;
 }
 
 .container{
- max-width:720px;
- margin:auto;
- padding:12px
+    width:100%;
+    max-width:760px;
+    margin:auto;
+    padding:15px;
 }
 
-.card{
- background:white;
- border-radius:18px;
- padding:20px;
- margin:12px 0;
- box-shadow:0 3px 14px rgba(0,0,0,.08)
-}
+/* HEADER */
 
 .header{
- text-align:center;
- padding:24px 15px
+    background:white;
+    border-radius:26px;
+    padding:25px 15px;
+    text-align:center;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    margin-bottom:20px;
 }
 
 .header h1{
- margin:0 0 8px;
- font-size:26px
+    margin:0;
+    font-size:32px;
+    line-height:1.2;
 }
 
 .header p{
- margin:0;
- color:#666
+    margin:12px 0 0;
+    color:#666;
+    font-size:19px;
 }
 
-.setup h2{
- margin-top:0
+/* EXAM CARD */
+
+.card{
+    background:white;
+    border-radius:26px;
+    padding:24px;
+    margin-bottom:18px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
 }
 
-.select{
- width:100%;
- padding:15px;
- margin:8px 0 15px;
- border:2px solid #ddd;
- border-radius:10px;
- font-size:16px;
- background:white
-}
-
-.start-btn,
-.next-btn,
-.submit-btn,
-.restart-btn{
- width:100%;
- border:0;
- border-radius:11px;
- padding:15px;
- font-size:17px;
- cursor:pointer;
- margin-top:10px
-}
-
-.start-btn{
- background:#202124;
- color:white
-}
-
-.next-btn{
- background:#202124;
- color:white
-}
-
-.submit-btn{
- background:#b3261e;
- color:white
-}
-
-.restart-btn{
- background:#202124;
- color:white
-}
-
-.exam-top{
- display:flex;
- justify-content:space-between;
- align-items:center;
- font-weight:bold;
- gap:10px
+.top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    font-size:20px;
+    font-weight:bold;
 }
 
 .timer{
- padding:8px 12px;
- border-radius:20px;
- background:#eee
+    background:#f1f1f1;
+    padding:11px 17px;
+    border-radius:25px;
+    white-space:nowrap;
 }
 
-.timer.danger{
- background:#f8d7da
-}
+/* PROGRESS */
 
 .progress{
- height:8px;
- background:#e4e4e4;
- border-radius:10px;
- overflow:hidden;
- margin:15px 0
+    height:13px;
+    background:#ddd;
+    border-radius:20px;
+    overflow:hidden;
+    margin:20px 0;
 }
 
 .progress-bar{
- height:100%;
- width:0%;
- background:#202124;
- transition:.2s
+    height:100%;
+    width:0%;
+    background:#222;
+    transition:width .3s ease;
 }
+
+/* TOPIC */
 
 .topic{
- display:inline-block;
- padding:6px 12px;
- background:#eaf0ff;
- border-radius:20px;
- font-size:13px;
- margin-bottom:12px
+    display:inline-block;
+    background:#eaf0ff;
+    padding:9px 17px;
+    border-radius:25px;
+    margin-bottom:15px;
+    font-size:17px;
 }
+
+/* QUESTION */
 
 .question{
- font-size:20px;
- font-weight:bold;
- line-height:1.5;
- margin:8px 0 20px
+    font-size:25px;
+    line-height:1.45;
+    font-weight:bold;
+    margin-bottom:20px;
 }
 
+/* OPTIONS */
+
 .option{
- display:block;
- width:100%;
- padding:15px;
- margin:10px 0;
- background:white;
- border:2px solid #ddd;
- border-radius:11px;
- text-align:left;
- font-size:16px;
- cursor:pointer
+    border:3px solid #ddd;
+    border-radius:18px;
+    padding:17px;
+    margin:12px 0;
+    font-size:19px;
+    cursor:pointer;
+    background:white;
+    transition:all .15s ease;
+    user-select:none;
+}
+
+.option:hover{
+    border-color:#999;
+}
+
+.option:active{
+    transform:scale(.985);
 }
 
 .option.selected{
- border-color:#202124;
- background:#f0f0f0
+    border-color:#222;
+    background:#f1f1f1;
 }
 
 .option.correct{
- border-color:#16803c;
- background:#e9f7ef
+    border-color:#16a34a;
+    background:#dcfce7;
 }
 
 .option.wrong{
- border-color:#c62828;
- background:#fdecec
+    border-color:#dc2626;
+    background:#fee2e2;
 }
 
-.option:disabled{
- cursor:not-allowed
+/* BUTTONS */
+
+button{
+    width:100%;
+    border:none;
+    border-radius:18px;
+    padding:17px;
+    font-size:19px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:transform .15s ease;
 }
 
-.feedback{
- display:none;
- margin-top:15px;
- padding:15px;
- border-radius:10px;
- line-height:1.5
+button:active{
+    transform:scale(.98);
 }
 
-.feedback.show{
- display:block
+.next{
+    background:#222;
+    color:white;
+    margin-top:15px;
 }
 
-.correct-feedback{
- background:#e9f7ef
+.submit{
+    background:#b91c1c;
+    color:white;
+    margin-top:5px;
 }
 
-.wrong-feedback{
- background:#fdecec
-}
-
-.explanation{
- margin-top:8px;
- font-size:15px
-}
+/* RESULT */
 
 .result{
- display:none;
- text-align:center
+    display:none;
+    text-align:center;
 }
 
-.big-score{
- font-size:42px;
- font-weight:bold;
- margin:15px 0
+.result h2{
+    font-size:32px;
 }
 
-.stat{
- padding:12px;
- margin:8px 0;
- background:#f5f5f5;
- border-radius:10px;
- text-align:left
+.score{
+    font-size:58px;
+    font-weight:bold;
+    margin:20px 0;
 }
 
-.topic-row{
- display:flex;
- justify-content:space-between;
- padding:10px 0;
- border-bottom:1px solid #ddd
+.pass{
+    color:#16a34a;
 }
 
-.hidden{
- display:none!important
+.fail{
+    color:#dc2626;
 }
 
-.error{
- background:#fdecec;
- padding:18px;
- border-radius:12px;
- line-height:1.5
+.stats{
+    font-size:18px;
+    line-height:1.8;
 }
 
-.small{
- font-size:13px;
- color:#666
+/* CONGRATULATION POPUP */
+
+.congrats{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.75);
+    z-index:9999;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
 }
 
-@media(max-width:600px){
- .container{padding:8px}
- .card{padding:17px}
- .question{font-size:18px}
+.congrats-box{
+    background:white;
+    padding:38px 25px;
+    border-radius:30px;
+    width:100%;
+    max-width:500px;
+    text-align:center;
+    animation:pop .55s ease;
+}
+
+.trophy{
+    font-size:75px;
+    animation:bounce 1s infinite;
+}
+
+.congrats-box h1{
+    font-size:40px;
+    margin:10px 0;
+}
+
+.congrats-box p{
+    font-size:21px;
+    color:#555;
+}
+
+@keyframes pop{
+    0%{
+        transform:scale(.3);
+        opacity:0;
+    }
+    70%{
+        transform:scale(1.08);
+    }
+    100%{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+@keyframes bounce{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-12px);
+    }
+}
+
+/* CONFETTI */
+
+.confetti{
+    position:fixed;
+    width:10px;
+    height:18px;
+    top:-25px;
+    z-index:10000;
+    animation:fall 3.5s linear forwards;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh) rotate(720deg);
+        opacity:0;
+    }
+}
+
+/* TOAST */
+
+.toast{
+    position:fixed;
+    left:50%;
+    bottom:25px;
+    transform:translateX(-50%);
+    background:#222;
+    color:white;
+    padding:13px 20px;
+    border-radius:25px;
+    display:none;
+    z-index:20000;
+}
+
+/* MOBILE */
+
+@media(max-width:500px){
+
+    .container{
+        padding:12px;
+    }
+
+    .header{
+        padding:22px 12px;
+    }
+
+    .header h1{
+        font-size:28px;
+    }
+
+    .header p{
+        font-size:18px;
+    }
+
+    .card{
+        padding:20px;
+        border-radius:23px;
+    }
+
+    .top{
+        font-size:17px;
+    }
+
+    .timer{
+        padding:9px 13px;
+        font-size:16px;
+    }
+
+    .question{
+        font-size:23px;
+    }
+
+    .option{
+        font-size:18px;
+        padding:16px;
+    }
+
+    .congrats-box h1{
+        font-size:34px;
+    }
 }
 </style>
 </head>
@@ -252,667 +355,1085 @@ body{
 
 <div class="container">
 
-<!-- HEADER -->
+    <!-- HEADER -->
 
-<div class="card header">
- <h1>🌿 BTBD Botany Exam</h1>
- <p>UPHESC Assistant Professor Botany Preparation</p>
-</div>
-
-
-<!-- SETUP -->
-
-<div id="setup" class="card setup">
-
- <h2>🎯 Start Test</h2>
-
- <label>Number of Questions</label>
-
- <select id="questionCount" class="select">
-   <option value="20">20 Questions</option>
-   <option value="50">50 Questions</option>
-   <option value="100">100 Questions</option>
- </select>
+    <div class="header">
+        <h1>🌿 BTBD Botany Exam</h1>
+        <p>UPHESC Assistant Professor Botany Preparation</p>
+    </div>
 
 
- <label>Time</label>
+    <!-- QUIZ -->
 
- <select id="timeLimit" class="select">
-   <option value="20">20 Minutes</option>
-   <option value="50">50 Minutes</option>
-   <option value="100">100 Minutes</option>
- </select>
+    <div id="quizArea">
 
+        <div class="card">
 
- <p class="small">
- Negative marking: <b>-0.25</b> for each wrong answer.
- </p>
+            <div class="top">
 
- <button class="start-btn" onclick="startExam()">
- 🚀 Start Exam
- </button>
+                <span id="questionNo">
+                    Question 1 / 20
+                </span>
 
-</div>
+                <span class="timer" id="timer">
+                    50:00
+                </span>
 
-
-<!-- EXAM -->
-
-<div id="exam" class="hidden">
-
- <div class="card">
-
-   <div class="exam-top">
-
-     <span id="questionNumber">
-       Question 1
-     </span>
-
-     <span id="timer" class="timer">
-       20:00
-     </span>
-
-   </div>
-
-   <div class="progress">
-     <div id="progressBar" class="progress-bar"></div>
-   </div>
-
-   <div id="topic" class="topic">
-     Botany
-   </div>
-
-   <div id="question" class="question"></div>
-
-   <div id="options"></div>
-
-   <div id="feedback" class="feedback">
-
-     <b id="feedbackTitle"></b>
-
-     <div class="explanation">
-       <b>Explanation:</b>
-       <span id="explanation"></span>
-     </div>
-
-   </div>
-
-   <button id="nextBtn"
-           class="next-btn hidden"
-           onclick="nextQuestion()">
-     Next Question →
-   </button>
-
- </div>
+            </div>
 
 
- <div class="card">
+            <!-- PROGRESS -->
 
-   <button class="submit-btn"
-           onclick="submitExam()">
-     🏁 Submit Test
-   </button>
-
- </div>
-
-</div>
+            <div class="progress">
+                <div
+                    class="progress-bar"
+                    id="progressBar">
+                </div>
+            </div>
 
 
-<!-- RESULT -->
+            <!-- TOPIC -->
 
-<div id="result" class="card result">
+            <div class="topic" id="topic">
+                🌿 Botany
+            </div>
 
- <h2>🎉 Test Completed</h2>
 
- <div id="finalScore" class="big-score">
-   0
- </div>
+            <!-- QUESTION -->
 
- <div id="resultMessage"></div>
+            <div
+                class="question"
+                id="question">
+                Loading question...
+            </div>
 
- <div class="stat">
-   ✅ Correct:
-   <b id="correctCount">0</b>
- </div>
 
- <div class="stat">
-   ❌ Wrong:
-   <b id="wrongCount">0</b>
- </div>
+            <!-- OPTIONS -->
 
- <div class="stat">
-   ⭕ Unattempted:
-   <b id="unattemptedCount">0</b>
- </div>
+            <div id="options"></div>
 
- <div class="stat">
-   📊 Accuracy:
-   <b id="accuracy">0%</b>
- </div>
 
- <h3>📚 Topic Performance</h3>
+            <!-- NEXT -->
 
- <div id="topicPerformance"></div>
+            <button
+                class="next"
+                id="nextBtn"
+                onclick="nextQuestion()">
 
- <button class="restart-btn"
-         onclick="location.reload()">
-   🔄 New Test
- </button>
+                Next Question →
+
+            </button>
+
+        </div>
+
+
+        <!-- SUBMIT -->
+
+        <button
+            class="submit"
+            onclick="submitTest()">
+
+            🏁 Submit Test
+
+        </button>
+
+    </div>
+
+
+    <!-- RESULT -->
+
+    <div
+        class="card result"
+        id="result">
+
+        <h2>📊 Test Result</h2>
+
+        <div
+            class="score"
+            id="finalScore">
+            0 / 0
+        </div>
+
+        <div
+            class="stats"
+            id="resultStats">
+        </div>
+
+        <h2
+            id="resultMessage">
+        </h2>
+
+        <button
+            class="next"
+            onclick="location.reload()">
+
+            🔄 Restart Test
+
+        </button>
+
+    </div>
 
 </div>
 
 
+<!-- CONGRATULATIONS -->
+
+<div
+    class="congrats"
+    id="congrats">
+
+    <div class="congrats-box">
+
+        <div class="trophy">
+            🏆
+        </div>
+
+        <h1>
+            🎉 Congratulations!
+        </h1>
+
+        <p id="congratsText">
+            Excellent performance!
+        </p>
+
+        <button
+            class="next"
+            onclick="closeCongrats()">
+
+            Continue →
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div
+    class="toast"
+    id="toast">
 </div>
 
 
 <script>
 
-let allQuestions=[];
-let examQuestions=[];
-
-let currentQuestion=0;
-
-let answers=[];
-
-let correct=0;
-let wrong=0;
-let unattempted=0;
-
-let score=0;
-
-let totalSeconds=0;
-let timerInterval=null;
+/* =====================================================
+   BTBD BOTANY QUIZ ENGINE
+===================================================== */
 
 
-/* ==========================
-   LOAD DATABASE
-========================== */
+/* QUESTIONS */
 
-async function loadQuestions(){
-
- try{
-
-   const response=await fetch("mcqs.json");
-
-   if(!response.ok){
-     throw new Error("mcqs.json could not be loaded.");
-   }
-
-   allQuestions=await response.json();
-
-   if(!Array.isArray(allQuestions) ||
-      allQuestions.length===0){
-
-     throw new Error("No questions found.");
-
-   }
-
- }
-
- catch(error){
-
-   document.getElementById("setup").innerHTML=`
-     <div class="error">
-       <b>⚠️ Database Error</b>
-       <br><br>
-       ${error.message}
-       <br><br>
-       Make sure <b>mcqs.json</b> is in the repository root.
-     </div>
-   `;
-
- }
-
-}
+let questions = [];
 
 
-/* ==========================
-   START EXAM
-========================== */
+/* QUIZ STATE */
 
-function startExam(){
-
- const requestedCount=
-   parseInt(document.getElementById("questionCount").value);
-
- const minutes=
-   parseInt(document.getElementById("timeLimit").value);
+let current = 0;
+let score = 0;
+let selected = false;
 
 
- if(allQuestions.length===0){
+/* TIMER */
 
-   alert("No MCQs available.");
-
-   return;
-
- }
+let totalSeconds = 50 * 60;
+let timerInterval;
 
 
- const count=
-   Math.min(requestedCount,allQuestions.length);
+/* AUDIO */
+
+let audioContext = null;
 
 
- /* RANDOM QUESTIONS */
+/* =====================================================
+   AUDIO ENGINE
+===================================================== */
 
- examQuestions=
-   [...allQuestions]
-   .sort(()=>Math.random()-0.5)
-   .slice(0,count);
+function startAudio(){
 
+    try{
 
- answers=new Array(count).fill(null);
+        if(!audioContext){
 
- currentQuestion=0;
+            audioContext =
+                new (
+                    window.AudioContext ||
+                    window.webkitAudioContext
+                )();
 
- correct=0;
- wrong=0;
- unattempted=0;
- score=0;
+        }
 
+        if(audioContext.state === "suspended"){
 
- totalSeconds=minutes*60;
+            audioContext.resume();
 
+        }
 
- document.getElementById("setup")
-   .classList.add("hidden");
+    }catch(error){
 
- document.getElementById("exam")
-   .classList.remove("hidden");
+        console.log("Audio unavailable");
 
-
- startTimer();
-
- showQuestion();
+    }
 
 }
 
 
-/* ==========================
-   TIMER
-========================== */
+/* BASIC SOUND */
 
-function startTimer(){
+function beep(
+    frequency,
+    duration,
+    type="sine",
+    volume=.08
+){
 
- clearInterval(timerInterval);
+    try{
 
- updateTimer();
+        startAudio();
 
- timerInterval=setInterval(function(){
+        const oscillator =
+            audioContext.createOscillator();
 
-   totalSeconds--;
+        const gain =
+            audioContext.createGain();
 
-   updateTimer();
 
-   if(totalSeconds<=0){
+        oscillator.type = type;
 
-     clearInterval(timerInterval);
+        oscillator.frequency.value =
+            frequency;
 
-     alert("⏰ Time is over!");
 
-     submitExam();
+        gain.gain.setValueAtTime(
+            volume,
+            audioContext.currentTime
+        );
 
-   }
 
- },1000);
+        gain.gain.exponentialRampToValueAtTime(
+            .001,
+            audioContext.currentTime + duration
+        );
+
+
+        oscillator.connect(gain);
+
+        gain.connect(
+            audioContext.destination
+        );
+
+
+        oscillator.start();
+
+
+        oscillator.stop(
+            audioContext.currentTime + duration
+        );
+
+    }catch(error){
+
+        console.log(error);
+
+    }
 
 }
 
 
-function updateTimer(){
+/* OPTION CLICK */
 
- const timer=
-   document.getElementById("timer");
+function clickSound(){
 
- const minutes=
-   Math.floor(totalSeconds/60);
-
- const seconds=
-   totalSeconds%60;
-
- timer.textContent=
-   String(minutes).padStart(2,"0")
-   +":"
-   +String(seconds).padStart(2,"0");
-
-
- if(totalSeconds<=60){
-
-   timer.classList.add("danger");
-
- }
+    beep(
+        650,
+        .08,
+        "sine",
+        .06
+    );
 
 }
 
 
-/* ==========================
+/* CORRECT */
+
+function correctSound(){
+
+    beep(
+        700,
+        .12,
+        "sine",
+        .07
+    );
+
+
+    setTimeout(function(){
+
+        beep(
+            1000,
+            .18,
+            "sine",
+            .08
+        );
+
+    },100);
+
+}
+
+
+/* WRONG */
+
+function wrongSound(){
+
+    beep(
+        180,
+        .20,
+        "sawtooth",
+        .06
+    );
+
+}
+
+
+/* NEXT SOUND */
+
+function nextSound(){
+
+    beep(
+        500,
+        .07,
+        "sine",
+        .05
+    );
+
+}
+
+
+/* =====================================================
+   CONGRATULATIONS SOUND
+===================================================== */
+
+function congratulationsSound(){
+
+    startAudio();
+
+
+    const notes = [
+
+        523,
+        659,
+        784,
+        1047,
+        784,
+        1047
+
+    ];
+
+
+    notes.forEach(function(note,index){
+
+        setTimeout(function(){
+
+            beep(
+                note,
+                .22,
+                "sine",
+                .10
+            );
+
+        },index * 130);
+
+    });
+
+}
+
+
+/* =====================================================
+   LOAD MCQS.JSON
+===================================================== */
+
+fetch("mcqs.json")
+
+.then(function(response){
+
+    if(!response.ok){
+
+        throw new Error(
+            "mcqs.json not found"
+        );
+
+    }
+
+    return response.json();
+
+})
+
+
+.then(function(data){
+
+    if(!Array.isArray(data)){
+
+        throw new Error(
+            "MCQ JSON must be an array"
+        );
+
+    }
+
+
+    questions = data.slice(0,20);
+
+
+    if(questions.length === 0){
+
+        throw new Error(
+            "No questions available"
+        );
+
+    }
+
+
+    showQuestion();
+
+})
+
+
+.catch(function(error){
+
+    console.log(error);
+
+
+    document.getElementById(
+        "question"
+    ).innerHTML =
+
+        "⚠️ MCQ loading error.<br><br>" +
+
+        "Please check that <b>mcqs.json</b> " +
+        "is present in the same folder.";
+
+});
+
+
+/* =====================================================
    SHOW QUESTION
-========================== */
+===================================================== */
 
 function showQuestion(){
 
- const q=examQuestions[currentQuestion];
-
- document.getElementById("questionNumber")
-   .textContent=
-   "Question "
-   +(currentQuestion+1)
-   +" / "
-   +examQuestions.length;
+    selected = false;
 
 
- document.getElementById("progressBar")
-   .style.width=
-   ((currentQuestion+1)/examQuestions.length*100)
-   +"%";
+    const q =
+        questions[current];
 
 
- document.getElementById("topic")
-   .textContent=
-   "🌿 "+(q.topic||"Botany");
+    /* QUESTION NUMBER */
+
+    document.getElementById(
+        "questionNo"
+    ).innerText =
+
+        `Question ${current + 1} / ${questions.length}`;
 
 
- document.getElementById("question")
-   .textContent=
-   q.question;
+    /* TOPIC */
+
+    document.getElementById(
+        "topic"
+    ).innerText =
+
+        "🌿 " + (q.topic || "Botany");
 
 
- const container=
-   document.getElementById("options");
+    /* QUESTION */
 
- container.innerHTML="";
+    document.getElementById(
+        "question"
+    ).innerText =
 
-
- q.options.forEach(function(option,index){
-
-   const button=
-     document.createElement("button");
-
-   button.className="option";
-
-   button.textContent=
-     String.fromCharCode(65+index)
-     +". "
-     +option;
+        q.question;
 
 
-   if(answers[currentQuestion]===option){
+    /* OPTIONS */
 
-     button.classList.add("selected");
-
-   }
-
-
-   button.onclick=function(){
-
-     selectAnswer(button,option);
-
-   };
+    const optionsContainer =
+        document.getElementById(
+            "options"
+        );
 
 
-   container.appendChild(button);
-
- });
+    optionsContainer.innerHTML = "";
 
 
- document.getElementById("feedback")
-   .className="feedback";
+    q.options.forEach(
+        function(option,index){
 
- document.getElementById("feedback")
-   .style.display="none";
+            const div =
+                document.createElement(
+                    "div"
+                );
 
 
- document.getElementById("nextBtn")
-   .classList.add("hidden");
+            div.className =
+                "option";
+
+
+            div.innerText =
+
+                `${String.fromCharCode(65 + index)}. ${option}`;
+
+
+            div.onclick =
+                function(){
+
+                    selectAnswer(
+                        index,
+                        div
+                    );
+
+                };
+
+
+            optionsContainer.appendChild(
+                div
+            );
+
+        }
+    );
+
+
+    /* PROGRESS */
+
+    const progress =
+        ((current + 1) /
+        questions.length) * 100;
+
+
+    document.getElementById(
+        "progressBar"
+    ).style.width =
+        progress + "%";
+
+
+    /* BUTTON */
+
+    if(
+        current ===
+        questions.length - 1
+    ){
+
+        document.getElementById(
+            "nextBtn"
+        ).innerText =
+            "🏁 Finish Questions";
+
+    }else{
+
+        document.getElementById(
+            "nextBtn"
+        ).innerText =
+            "Next Question →";
+
+    }
 
 }
 
 
-/* ==========================
+/* =====================================================
    SELECT ANSWER
-========================== */
+===================================================== */
 
-function selectAnswer(button,answer){
+function selectAnswer(
+    index,
+    element
+){
 
- if(document.getElementById("feedback")
-    .style.display==="block"){
+    if(selected){
 
-   return;
+        return;
 
- }
-
-
- answers[currentQuestion]=answer;
-
-
- document.querySelectorAll(".option")
-   .forEach(function(btn){
-
-     btn.classList.remove("selected");
-
-   });
+    }
 
 
- button.classList.add("selected");
+    startAudio();
 
+
+    selected = true;
+
+
+    const q =
+        questions[current];
+
+
+    /* FIND CORRECT ANSWER */
+
+    const correctIndex =
+        q.options.findIndex(
+            function(option){
+
+                return option === q.answer;
+
+            }
+        );
+
+
+    /* CLICK SOUND */
+
+    clickSound();
+
+
+    /* CORRECT */
+
+    if(index === correctIndex){
+
+        element.classList.add(
+            "correct"
+        );
+
+
+        score++;
+
+
+        setTimeout(
+            correctSound,
+            80
+        );
+
+
+    }
+
+    /* WRONG */
+
+    else{
+
+        element.classList.add(
+            "wrong"
+        );
+
+
+        wrongSound();
+
+
+        const allOptions =
+            document.querySelectorAll(
+                ".option"
+            );
+
+
+        if(
+            allOptions[correctIndex]
+        ){
+
+            allOptions[
+                correctIndex
+            ].classList.add(
+                "correct"
+            );
+
+        }
+
+    }
 
 }
 
 
-/* ==========================
+/* =====================================================
    NEXT QUESTION
-========================== */
+===================================================== */
 
 function nextQuestion(){
 
- if(currentQuestion<
-    examQuestions.length-1){
-
-   currentQuestion++;
-
-   showQuestion();
-
- }
-
- else{
-
-   submitExam();
-
- }
-
-}
+    startAudio();
 
 
-/* ==========================
-   SUBMIT EXAM
-========================== */
+    if(!selected){
 
-function submitExam(){
-
- clearInterval(timerInterval);
-
- correct=0;
- wrong=0;
- unattempted=0;
- score=0;
+        beep(
+            250,
+            .15,
+            "square",
+            .05
+        );
 
 
- examQuestions.forEach(function(q,index){
-
-   const selected=answers[index];
-
-
-   if(selected===null){
-
-     unattempted++;
-
-   }
-
-   else if(selected===q.answer){
-
-     correct++;
-
-     score+=1;
-
-   }
-
-   else{
-
-     wrong++;
-
-     score-=0.25;
-
-   }
-
- });
+        showToast(
+            "⚠️ Please select an answer first."
+        );
 
 
- const percentage=
-   Math.max(
-     0,
-     Math.round(
-       (score/examQuestions.length)*100
-     )
-   );
+        return;
+
+    }
 
 
- document.getElementById("exam")
-   .classList.add("hidden");
-
- document.getElementById("result")
-   .style.display="block";
+    nextSound();
 
 
- document.getElementById("finalScore")
-   .textContent=
-   score.toFixed(2)
-   +" / "
-   +examQuestions.length;
+    if(
+        current <
+        questions.length - 1
+    ){
+
+        current++;
 
 
- document.getElementById("correctCount")
-   .textContent=correct;
+        showQuestion();
 
 
- document.getElementById("wrongCount")
-   .textContent=wrong;
+        window.scrollTo({
 
+            top:0,
 
- document.getElementById("unattemptedCount")
-   .textContent=unattempted;
+            behavior:"smooth"
 
+        });
 
- document.getElementById("accuracy")
-   .textContent=percentage+"%";
+    }
 
+    else{
 
- let message="Keep practicing! 🌱";
+        submitTest();
 
-
- if(percentage>=80){
-
-   message="🔥 Excellent performance!";
-
- }
-
- else if(percentage>=60){
-
-   message="👍 Good performance. Keep revising!";
-
- }
-
- else if(percentage>=40){
-
-   message="📚 Needs more revision.";
-
- }
-
-
- document.getElementById("resultMessage")
-   .innerHTML=
-   "<h3>"+message+"</h3>";
-
-
- showTopicPerformance();
+    }
 
 }
 
 
-/* ==========================
-   TOPIC PERFORMANCE
-========================== */
+/* =====================================================
+   SUBMIT TEST
+===================================================== */
 
-function showTopicPerformance(){
+function submitTest(){
 
- const topics={};
-
-
- examQuestions.forEach(function(q,index){
-
-   const topic=q.topic||"Other";
-
-   if(!topics[topic]){
-
-     topics[topic]={
-       total:0,
-       correct:0
-     };
-
-   }
+    startAudio();
 
 
-   topics[topic].total++;
+    /* CONFIRM IF CURRENT QUESTION NOT ANSWERED */
+
+    if(
+        !selected &&
+        current < questions.length
+    ){
+
+        const confirmSubmit =
+            confirm(
+                "Current question is unanswered. Submit test?"
+            );
 
 
-   if(answers[index]===q.answer){
+        if(!confirmSubmit){
 
-     topics[topic].correct++;
+            return;
 
-   }
+        }
 
- });
-
-
- const box=
-   document.getElementById("topicPerformance");
-
- box.innerHTML="";
+    }
 
 
- Object.keys(topics)
-   .forEach(function(topic){
-
-     const data=topics[topic];
-
-     const percentage=
-       Math.round(
-         data.correct/data.total*100
-       );
+    clearInterval(
+        timerInterval
+    );
 
 
-     const row=
-       document.createElement("div");
+    /* HIDE QUIZ */
 
-     row.className="topic-row";
-
-
-     row.innerHTML=`
-       <span>🌿 ${topic}</span>
-       <b>${data.correct}/${data.total}
-       (${percentage}%)</b>
-     `;
+    document.getElementById(
+        "quizArea"
+    ).style.display =
+        "none";
 
 
-     box.appendChild(row);
+    /* SHOW RESULT */
 
-   });
+    document.getElementById(
+        "result"
+    ).style.display =
+        "block";
+
+
+    /* SCORE */
+
+    const total =
+        questions.length;
+
+
+    const percentage =
+        Math.round(
+            (score / total) * 100
+        );
+
+
+    document.getElementById(
+        "finalScore"
+    ).innerText =
+
+        `${score} / ${total}`;
+
+
+    document.getElementById(
+        "resultStats"
+    ).innerHTML =
+
+        `Correct: <b>${score}</b><br>` +
+
+        `Incorrect: <b>${total - score}</b><br>` +
+
+        `Percentage: <b>${percentage}%</b>`;
+
+
+    const message =
+        document.getElementById(
+            "resultMessage"
+        );
+
+
+    /* PASS */
+
+    if(percentage >= 50){
+
+        message.innerText =
+            `🎉 PASS — ${percentage}%`;
+
+        message.className =
+            "pass";
+
+
+        /* SHOW CONGRATULATIONS */
+
+        setTimeout(function(){
+
+            document.getElementById(
+                "congrats"
+            ).style.display =
+                "flex";
+
+
+            document.getElementById(
+                "congratsText"
+            ).innerText =
+
+                `You scored ${score} out of ${total}. ` +
+                `Keep going — BTBD! 🌿`;
+
+
+            congratulationsSound();
+
+
+            createConfetti();
+
+
+        },500);
+
+    }
+
+    /* FAIL */
+
+    else{
+
+        message.innerText =
+            `📚 Keep Practising — ${percentage}%`;
+
+        message.className =
+            "fail";
+
+    }
 
 }
 
 
-/* ==========================
-   INITIALIZE
-========================== */
+/* =====================================================
+   CONGRATULATIONS CLOSE
+===================================================== */
 
-loadQuestions();
+function closeCongrats(){
+
+    document.getElementById(
+        "congrats"
+    ).style.display =
+        "none";
+
+}
+
+
+/* =====================================================
+   CONFETTI
+===================================================== */
+
+function createConfetti(){
+
+    for(
+        let i = 0;
+        i < 100;
+        i++
+    ){
+
+        const confetti =
+            document.createElement(
+                "div"
+            );
+
+
+        confetti.className =
+            "confetti";
+
+
+        confetti.style.left =
+            Math.random() * 100 +
+            "vw";
+
+
+        confetti.style.animationDelay =
+            Math.random() * 1.5 +
+            "s";
+
+
+        confetti.style.transform =
+            `rotate(${Math.random() * 360}deg)`;
+
+
+        /* Random shapes */
+
+        const size =
+            Math.random() * 8 + 7;
+
+
+        confetti.style.width =
+            size + "px";
+
+
+        confetti.style.height =
+            size * 1.6 + "px";
+
+
+        document.body.appendChild(
+            confetti
+        );
+
+
+        setTimeout(
+            function(){
+
+                confetti.remove();
+
+            },
+            5000
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+function showToast(message){
+
+    const toast =
+        document.getElementById(
+            "toast"
+        );
+
+
+    toast.innerText =
+        message;
+
+
+    toast.style.display =
+        "block";
+
+
+    setTimeout(
+        function(){
+
+            toast.style.display =
+                "none";
+
+        },
+        1800
+    );
+
+}
+
+
+/* =====================================================
+   TIMER
+===================================================== */
+
+function updateTimer(){
+
+    const minutes =
+        Math.floor(
+            totalSeconds / 60
+        );
+
+
+    const seconds =
+        totalSeconds % 60;
+
+
+    document.getElementById(
+        "timer"
+    ).innerText =
+
+        `${String(minutes).padStart(2,"0")}:${String(seconds).padStart(2,"0")}`;
+
+
+    /* LAST 5 MINUTES */
+
+    if(totalSeconds <= 300){
+
+        document.getElementById(
+            "timer"
+        ).style.background =
+            "#fee2e2";
+
+        document.getElementById(
+            "timer"
+        ).style.color =
+            "#dc2626";
+
+    }
+
+
+    /* TIME OVER */
+
+    if(totalSeconds <= 0){
+
+        clearInterval(
+            timerInterval
+        );
+
+
+        alert(
+            "⏰ Time Over!"
+        );
+
+
+        submitTest();
+
+
+        return;
+
+    }
+
+
+    totalSeconds--;
+
+}
+
+
+/* START TIMER */
+
+timerInterval =
+    setInterval(
+        updateTimer,
+        1000
+    );
+
+
+updateTimer();
 
 </script>
 
