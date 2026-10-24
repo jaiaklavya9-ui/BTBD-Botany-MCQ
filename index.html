@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BTBD Botany MCQ Quiz</title>
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f4f7f6;
+  color:#222;
+}
+
+.container{
+  max-width:720px;
+  margin:auto;
+  padding:15px;
+}
+
+.header{
+  background:white;
+  padding:22px 15px;
+  margin-bottom:15px;
+  border-radius:16px;
+  text-align:center;
+  box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+.header h1{
+  margin:0 0 8px;
+  font-size:25px;
+}
+
+.header p{
+  margin:0;
+  color:#666;
+}
+
+.quiz-card{
+  background:white;
+  padding:22px;
+  border-radius:16px;
+  box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:15px;
+  font-weight:bold;
+}
+
+.progress{
+  height:8px;
+  background:#e5e5e5;
+  border-radius:10px;
+  overflow:hidden;
+  margin-bottom:20px;
+}
+
+.progress-bar{
+  height:100%;
+  width:0%;
+  background:#222;
+  transition:.3s;
+}
+
+.topic{
+  display:inline-block;
+  padding:6px 12px;
+  background:#eaf0ff;
+  border-radius:20px;
+  font-size:13px;
+  margin-bottom:15px;
+}
+
+.question{
+  font-size:20px;
+  font-weight:bold;
+  line-height:1.5;
+  margin-bottom:20px;
+}
+
+.option{
+  display:block;
+  width:100%;
+  padding:15px;
+  margin:10px 0;
+  background:white;
+  border:2px solid #ddd;
+  border-radius:11px;
+  text-align:left;
+  font-size:16px;
+  cursor:pointer;
+}
+
+.option:hover{
+  border-color:#777;
+}
+
+.option.correct{
+  background:#e9f7ef;
+  border-color:#16803c;
+}
+
+.option.wrong{
+  background:#fdecec;
+  border-color:#c62828;
+}
+
+.option:disabled{
+  cursor:not-allowed;
+}
+
+.feedback{
+  display:none;
+  margin-top:18px;
+  padding:15px;
+  border-radius:10px;
+  line-height:1.5;
+}
+
+.feedback.correct{
+  display:block;
+  background:#e9f7ef;
+}
+
+.feedback.wrong{
+  display:block;
+  background:#fdecec;
+}
+
+.explanation{
+  margin-top:8px;
+  font-size:15px;
+}
+
+.next-btn,
+.restart-btn{
+  width:100%;
+  padding:15px;
+  margin-top:18px;
+  border:0;
+  border-radius:10px;
+  background:#222;
+  color:white;
+  font-size:17px;
+  cursor:pointer;
+}
+
+.result{
+  display:none;
+  text-align:center;
+}
+
+.final-score{
+  font-size:42px;
+  font-weight:bold;
+  margin:20px 0;
+}
+
+.loading{
+  background:white;
+  padding:30px;
+  border-radius:16px;
+  text-align:center;
+}
+
+.error{
+  background:#fdecec;
+  padding:20px;
+  border-radius:12px;
+  line-height:1.5;
+}
+
+@media(max-width:600px){
+  .container{
+    padding:10px;
+  }
+
+  .quiz-card{
+    padding:17px;
+  }
+
+  .question{
+    font-size:18px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <h1>🌿 BTBD Botany MCQ Quiz</h1>
+    <p>Botany The Burning Desire</p>
+  </div>
+
+  <div id="loading" class="loading">
+    🌱 Loading Botany Questions...
+  </div>
+
+  <div id="quizCard" class="quiz-card" style="display:none;">
+
+    <div class="topbar">
+      <span id="questionNumber"></span>
+      <span id="scoreDisplay">Score: 0</span>
+    </div>
+
+    <div class="progress">
+      <div id="progressBar" class="progress-bar"></div>
+    </div>
+
+    <div id="topic" class="topic"></div>
+
+    <div id="question" class="question"></div>
+
+    <div id="options"></div>
+
+    <div id="feedback" class="feedback">
+
+      <strong id="feedbackTitle"></strong>
+
+      <div class="explanation">
+        <b>Explanation:</b>
+        <span id="explanation"></span>
+      </div>
+
+    </div>
+
+    <button id="nextBtn" class="next-btn" style="display:none;">
+      Next Question →
+    </button>
+
+  </div>
+
+
+  <div id="result" class="quiz-card result">
+
+    <h2>🎉 Quiz Completed!</h2>
+
+    <div id="finalScore" class="final-score"></div>
+
+    <p id="resultMessage"></p>
+
+    <button class="restart-btn" onclick="restartQuiz()">
+      🔄 Restart Quiz
+    </button>
+
+  </div>
+
+</div>
+
+
+<script>
+
+let questions = [];
+let currentQuestion = 0;
+let score = 0;
+let answered = false;
+
+
+/* =========================
+   LOAD QUESTIONS
+========================= */
+
+async function loadQuestions(){
+
+  try{
+
+    const response = await fetch("mcqs.json");
+
+    if(!response.ok){
+      throw new Error("mcqs.json could not be loaded.");
+    }
+
+    questions = await response.json();
+
+    if(!Array.isArray(questions) || questions.length === 0){
+      throw new Error("No MCQs found in mcqs.json.");
+    }
+
+    document.getElementById("loading").style.display="none";
+
+    document.getElementById("quizCard").style.display="block";
+
+    showQuestion();
+
+  }
+
+  catch(error){
+
+    document.getElementById("loading").innerHTML = `
+      <div class="error">
+        <b>⚠️ Quiz Loading Error</b>
+        <br><br>
+        ${error.message}
+        <br><br>
+        Make sure <b>mcqs.json</b> is present
+        in the same GitHub repository.
+      </div>
+    `;
+
+  }
+
+}
+
+
+/* =========================
+   SHOW QUESTION
+========================= */
+
+function showQuestion(){
+
+  answered=false;
+
+  const q=questions[currentQuestion];
+
+  document.getElementById("questionNumber").textContent =
+    "Question " + (currentQuestion+1) +
+    " / " + questions.length;
+
+  document.getElementById("scoreDisplay").textContent =
+    "Score: " + score;
+
+  document.getElementById("topic").textContent =
+    "🌿 " + (q.topic || "Botany");
+
+  document.getElementById("question").textContent =
+    q.question;
+
+  const optionsContainer =
+    document.getElementById("options");
+
+  optionsContainer.innerHTML="";
+
+
+  q.options.forEach(function(option,index){
+
+    const button=document.createElement("button");
+
+    button.className="option";
+
+    button.textContent =
+      String.fromCharCode(65+index) + ". " + option;
+
+    button.onclick=function(){
+
+      checkAnswer(button,option);
+
+    };
+
+    optionsContainer.appendChild(button);
+
+  });
+
+
+  document.getElementById("feedback").className="feedback";
+
+  document.getElementById("feedback").style.display="none";
+
+  document.getElementById("nextBtn").style.display="none";
+
+
+  const progress =
+    ((currentQuestion) / questions.length) * 100;
+
+  document.getElementById("progressBar").style.width =
+    progress + "%";
+
+}
+
+
+/* =========================
+   CHECK ANSWER
+========================= */
+
+function checkAnswer(selectedButton,selectedAnswer){
+
+  if(answered) return;
+
+  answered=true;
+
+  const q=questions[currentQuestion];
+
+  const buttons=document.querySelectorAll(".option");
+
+
+  buttons.forEach(function(button){
+
+    button.disabled=true;
+
+    const text=button.textContent.substring(3);
+
+    if(text === q.answer){
+
+      button.classList.add("correct");
+
+    }
+
+  });
+
+
+  const feedback=document.getElementById("feedback");
+
+  const title=document.getElementById("feedbackTitle");
+
+  const explanation=document.getElementById("explanation");
+
+
+  if(selectedAnswer === q.answer){
+
+    score++;
+
+    selectedButton.classList.add("correct");
+
+    title.textContent="✅ Correct!";
+
+    feedback.className="feedback correct";
+
+  }
+
+  else{
+
+    selectedButton.classList.add("wrong");
+
+    title.textContent =
+      "❌ Wrong! Correct Answer: " + q.answer;
+
+    feedback.className="feedback wrong";
+
+  }
+
+
+  explanation.textContent =
+    q.explanation || "Explanation not available.";
+
+
+  document.getElementById("scoreDisplay").textContent =
+    "Score: " + score;
+
+  document.getElementById("nextBtn").style.display =
+    "block";
+
+}
+
+
+/* =========================
+   NEXT QUESTION
+========================= */
+
+document.getElementById("nextBtn").onclick=function(){
+
+  currentQuestion++;
+
+  if(currentQuestion < questions.length){
+
+    showQuestion();
+
+  }
+
+  else{
+
+    showResult();
+
+  }
+
+};
+
+
+/* =========================
+   RESULT
+========================= */
+
+function showResult(){
+
+  document.getElementById("quizCard").style.display="none";
+
+  document.getElementById("result").style.display="block";
+
+  const percentage =
+    Math.round((score/questions.length)*100);
+
+  document.getElementById("finalScore").textContent =
+    score + " / " + questions.length;
+
+  document.getElementById("resultMessage").textContent =
+    "Your accuracy is " + percentage + "%.";
+
+}
+
+
+/* =========================
+   RESTART
+========================= */
+
+function restartQuiz(){
+
+  currentQuestion=0;
+
+  score=0;
+
+  document.getElementById("result").style.display="none";
+
+  document.getElementById("quizCard").style.display="block";
+
+  showQuestion();
+
+}
+
+
+/* =========================
+   START QUIZ
+========================= */
+
+loadQuestions();
+
+</script>
+
+</body>
+</html>
