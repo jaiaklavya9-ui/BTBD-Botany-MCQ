@@ -1,0 +1,15 @@
+[
+  {
+    "id": 1,
+    "topic": "Algae",
+    "question": "Which pigment is characteristic of brown algae?",
+    "options": [
+      "Fucoxanthin",
+      "Phycoerythrin",
+      "Phycocyanin",
+      "Chlorophyll b"
+    ],
+    "answer": "Fucoxanthin",
+    "explanation": "Fucoxanthin is the characteristic brown accessory pigment of brown algae."
+  }
+]
