@@ -2,14 +2,301 @@
   {
     "id": 1,
     "topic": "Algae",
-    "question": "Which pigment is characteristic of brown algae?",
+    "difficulty": "Medium",
+    "type": "Conceptual",
+    "question": "Which pigment is primarily responsible for the characteristic brown colour of members of Phaeophyceae?",
     "options": [
-      "Fucoxanthin",
       "Phycoerythrin",
+      "Fucoxanthin",
       "Phycocyanin",
       "Chlorophyll b"
     ],
     "answer": "Fucoxanthin",
-    "explanation": "Fucoxanthin is the characteristic brown accessory pigment of brown algae."
+    "explanation": "Fucoxanthin is the major brown accessory carotenoid pigment in brown algae and masks the green colour of chlorophylls."
+  },
+  {
+    "id": 2,
+    "topic": "Bryophyta",
+    "difficulty": "Medium",
+    "type": "Conceptual",
+    "question": "In bryophytes, the dominant independent phase of the life cycle is the:",
+    "options": [
+      "Sporophyte",
+      "Gametophyte",
+      "Zygote",
+      "Embryo"
+    ],
+    "answer": "Gametophyte",
+    "explanation": "The bryophyte gametophyte is the dominant, photosynthetic and nutritionally independent generation, whereas the sporophyte remains attached to it."
+  },
+  {
+    "id": 3,
+    "topic": "Pteridophyta",
+    "difficulty": "Medium",
+    "type": "Conceptual",
+    "question": "Which feature most clearly distinguishes pteridophytes from bryophytes?",
+    "options": [
+      "Presence of chlorophyll",
+      "Presence of vascular tissue",
+      "Production of spores",
+      "Alternation of generations"
+    ],
+    "answer": "Presence of vascular tissue",
+    "explanation": "Pteridophytes possess well-developed vascular tissues, whereas bryophytes lack true xylem and phloem."
+  },
+  {
+    "id": 4,
+    "topic": "Gymnosperms",
+    "difficulty": "Medium",
+    "type": "Conceptual",
+    "question": "Which feature is characteristic of gymnosperms?",
+    "options": [
+      "Ovules enclosed within an ovary",
+      "Seeds enclosed within fruits",
+      "Naked ovules",
+      "Double fertilization producing endosperm"
+    ],
+    "answer": "Naked ovules",
+    "explanation": "Gymnosperms bear ovules that are not enclosed by an ovary; consequently, their seeds are generally described as naked."
+  },
+  {
+    "id": 5,
+    "topic": "Angiosperms",
+    "difficulty": "Hard",
+    "type": "Conceptual",
+    "question": "Double fertilization in angiosperms results in the formation of:",
+    "options": [
+      "Two embryos",
+      "Zygote and primary endosperm nucleus",
+      "Two endosperms",
+      "Zygote and two embryos"
+    ],
+    "answer": "Zygote and primary endosperm nucleus",
+    "explanation": "One male gamete fuses with the egg to form the diploid zygote, while the other fuses with the two polar nuclei to form the triploid primary endosperm nucleus."
+  },
+  {
+    "id": 6,
+    "topic": "Plant Anatomy",
+    "difficulty": "Medium",
+    "type": "Conceptual",
+    "question": "The Casparian strips in the endodermis are mainly associated with:",
+    "options": [
+      "Lignin deposition in xylem",
+      "Suberin deposition in radial and transverse walls",
+      "Callose deposition in sieve plates",
+      "Cutin deposition in epidermis"
+    ],
+    "answer": "Suberin deposition in radial and transverse walls",
+    "explanation": "Casparian strips contain suberin and occur in the radial and transverse walls of endodermal cells, regulating apoplastic movement of water and solutes."
+  },
+  {
+    "id": 7,
+    "topic": "Plant Physiology",
+    "difficulty": "Hard",
+    "type": "Conceptual",
+    "question": "According to the cohesion-tension theory, ascent of water in tall plants is primarily driven by:",
+    "options": [
+      "Root pressure alone",
+      "Transpiration-induced tension in xylem",
+      "Active pumping by xylem parenchyma",
+      "Osmosis across sieve tubes"
+    ],
+    "answer": "Transpiration-induced tension in xylem",
+    "explanation": "Evaporation of water from leaf surfaces generates tension that is transmitted through the continuous cohesive water column in xylem."
+  },
+  {
+    "id": 8,
+    "topic": "Photosynthesis",
+    "difficulty": "Hard",
+    "type": "Conceptual",
+    "question": "The oxygen released during oxygenic photosynthesis is derived directly from:",
+    "options": [
+      "Carbon dioxide",
+      "Water",
+      "Glucose",
+      "Chlorophyll"
+    ],
+    "answer": "Water",
+    "explanation": "Water is oxidized during the light reactions, particularly at Photosystem II, releasing molecular oxygen."
+  },
+  {
+    "id": 9,
+    "topic": "Respiration",
+    "difficulty": "Hard",
+    "type": "Conceptual",
+    "question": "In mitochondrial oxidative phosphorylation, the terminal electron acceptor of the electron transport chain is:",
+    "options": [
+      "NAD+",
+      "FAD",
+      "Oxygen",
+      "Carbon dioxide"
+    ],
+    "answer": "Oxygen",
+    "explanation": "Molecular oxygen accepts electrons at Complex IV and is reduced to water."
+  },
+  {
+    "id": 10,
+    "topic": "Plant Hormones",
+    "difficulty": "Medium",
+    "type": "Conceptual",
+    "question": "Which plant hormone is most closely associated with stomatal closure during water stress?",
+    "options": [
+      "Auxin",
+      "Gibberellin",
+      "Abscisic acid",
+      "Cytokinin"
+    ],
+    "answer": "Abscisic acid",
+    "explanation": "Abscisic acid (ABA) promotes stomatal closure during drought and other water-stress conditions, helping reduce water loss."
+  },
+  {
+    "id": 11,
+    "topic": "Cell Biology",
+    "difficulty": "Medium",
+    "type": "Conceptual",
+    "question": "Which organelle is the principal site of oxidative phosphorylation in a typical eukaryotic plant cell?",
+    "options": [
+      "Chloroplast",
+      "Mitochondrion",
+      "Golgi apparatus",
+      "Peroxisome"
+    ],
+    "answer": "Mitochondrion",
+    "explanation": "The inner mitochondrial membrane contains the electron transport chain and ATP synthase responsible for oxidative phosphorylation."
+  },
+  {
+    "id": 12,
+    "topic": "Genetics",
+    "difficulty": "Hard",
+    "type": "Conceptual",
+    "question": "A test cross is primarily used to determine the:",
+    "options": [
+      "Phenotype of a dominant parent",
+      "Genotype of an individual showing a dominant phenotype",
+      "Number of chromosomes",
+      "Mutation rate of a gene"
+    ],
+    "answer": "Genotype of an individual showing a dominant phenotype",
+    "explanation": "A dominant-phenotype individual of unknown genotype is crossed with a homozygous recessive individual to infer its genotype from offspring ratios."
+  },
+  {
+    "id": 13,
+    "topic": "Molecular Biology",
+    "difficulty": "Hard",
+    "type": "Conceptual",
+    "question": "During transcription in plants, RNA polymerase synthesizes RNA in which direction?",
+    "options": [
+      "3′ to 5′",
+      "5′ to 3′",
+      "Both directions simultaneously",
+      "Randomly depending on the gene"
+    ],
+    "answer": "5′ to 3′",
+    "explanation": "RNA polymerase adds ribonucleotides to the 3′-OH end of the growing RNA molecule, so RNA synthesis proceeds 5′ to 3′."
+  },
+  {
+    "id": 14,
+    "topic": "Molecular Biology",
+    "difficulty": "Hard",
+    "type": "Conceptual",
+    "question": "Which enzyme joins Okazaki fragments during DNA replication?",
+    "options": [
+      "DNA helicase",
+      "DNA ligase",
+      "Primase",
+      "Topoisomerase"
+    ],
+    "answer": "DNA ligase",
+    "explanation": "DNA ligase seals the nicks between adjacent DNA fragments by forming phosphodiester bonds."
+  },
+  {
+    "id": 15,
+    "topic": "Ecology",
+    "difficulty": "Medium",
+    "type": "Conceptual",
+    "question": "The pyramid of energy in an ecosystem is:",
+    "options": [
+      "Always inverted",
+      "Always upright",
+      "Sometimes inverted",
+      "Always spindle-shaped"
+    ],
+    "answer": "Always upright",
+    "explanation": "Energy decreases progressively at successive trophic levels because a substantial fraction is dissipated as heat during energy transfer."
+  },
+  {
+    "id": 16,
+    "topic": "Plant Taxonomy",
+    "difficulty": "Medium",
+    "type": "Conceptual",
+    "question": "The basic unit of biological classification is:",
+    "options": [
+      "Genus",
+      "Family",
+      "Species",
+      "Order"
+    ],
+    "answer": "Species",
+    "explanation": "Species is conventionally treated as the basic unit of biological classification, although species concepts vary among organisms and disciplines."
+  },
+  {
+    "id": 17,
+    "topic": "Plant Pathology",
+    "difficulty": "Medium",
+    "type": "Conceptual",
+    "question": "The causal organism of late blight of potato is:",
+    "options": [
+      "Puccinia graminis",
+      "Phytophthora infestans",
+      "Ustilago maydis",
+      "Albugo candida"
+    ],
+    "answer": "Phytophthora infestans",
+    "explanation": "Phytophthora infestans, an oomycete, causes late blight of potato and tomato."
+  },
+  {
+    "id": 18,
+    "topic": "Biotechnology",
+    "difficulty": "Medium",
+    "type": "Conceptual",
+    "question": "Agrobacterium tumefaciens is widely used in plant biotechnology because it naturally:",
+    "options": [
+      "Produces auxin in chloroplasts",
+      "Transfers T-DNA into plant cells",
+      "Fixes atmospheric nitrogen in leaves",
+      "Degrades plant cellulose exclusively"
+    ],
+    "answer": "Transfers T-DNA into plant cells",
+    "explanation": "Agrobacterium-mediated transformation exploits the natural ability of the bacterium to transfer T-DNA from its Ti plasmid into plant cells."
+  },
+  {
+    "id": 19,
+    "topic": "Plant Reproduction",
+    "difficulty": "Hard",
+    "type": "Conceptual",
+    "question": "In a typical angiosperm embryo sac, the egg apparatus consists of:",
+    "options": [
+      "One egg and two synergids",
+      "Two eggs and one synergid",
+      "Three antipodals",
+      "Two polar nuclei and one egg"
+    ],
+    "answer": "One egg and two synergids",
+    "explanation": "The egg apparatus at the micropylar end consists of one egg cell flanked by two synergids."
+  },
+  {
+    "id": 20,
+    "topic": "Plant Development",
+    "difficulty": "Hard",
+    "type": "Conceptual",
+    "question": "The shoot apical meristem primarily contributes to the formation of:",
+    "options": [
+      "Primary shoot tissues and organs",
+      "Only secondary xylem",
+      "Only root cap",
+      "Only lateral roots"
+    ],
+    "answer": "Primary shoot tissues and organs",
+    "explanation": "The shoot apical meristem generates the primary growth of the shoot, including leaves, stems and axillary meristems."
   }
 ]
